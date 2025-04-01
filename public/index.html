@@ -3,30 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>页面跳转</title>
+    <!-- 尝试跳转到目标网站 -->
+    <meta http-equiv="refresh" content="0;url=https://45d.cn">
+    <!-- 如果目标网站不可访问，则跳转到维护页面 -->
     <script>
-        // 检查目标 URL 是否可访问
-        function checkUrl(url, fallback) {
-            fetch(url, { method: 'HEAD', mode: 'no-cors' }) // 使用 HEAD 请求检查 URL
-                .then(response => {
-                    if (response.ok) { // 如果 URL 可访问，则跳转到该 URL
-                        window.location.href = url;
-                    } else { // 如果 URL 不可访问，则跳转到备用页面
-                        window.location.href = fallback;
-                    }
-                })
-                .catch(() => { // 如果发生错误（如网络问题），也跳转到备用页面
-                    window.location.href = fallback;
-                });
-        }
-
         window.onload = function() {
-            const targetUrl = "https://45d.cn"; // 目标 URL
-            const fallbackUrl = "/weihu.htm"; // 备用页面
-            checkUrl(targetUrl, fallbackUrl);
+            // 检查是否成功跳转到目标网站
+            const targetUrl = "https://45d.cn";
+            fetch(targetUrl, { method: 'HEAD', mode: 'no-cors' })
+                .catch(() => {
+                    // 如果发生错误，跳转到维护页面
+                    window.location.href = "/index.htm";
+                });
         };
     </script>
 </head>
 <body>
-    <p>正在检查服务器状态，请稍候...</p>
+    <p>正在跳转到目标网站...</p>
+    <p>如果无法访问，请稍后重试或查看 <a href="/weihu.htm">维护公告</a>。</p>
 </body>
 </html>
