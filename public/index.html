@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>我的网站</title>
+    <meta charset="UTF-8">
+    <title>页面跳转</title>
+    <script>
+        // 检查目标 URL 是否可访问
+        function checkUrl(url, fallback) {
+            fetch(url, { method: 'HEAD', mode: 'no-cors' }) // 使用 HEAD 请求检查 URL
+                .then(response => {
+                    if (response.ok) { // 如果 URL 可访问，则跳转到该 URL
+                        window.location.href = url;
+                    } else { // 如果 URL 不可访问，则跳转到备用页面
+                        window.location.href = fallback;
+                    }
+                })
+                .catch(() => { // 如果发生错误（如网络问题），也跳转到备用页面
+                    window.location.href = fallback;
+                });
+        }
+
+        window.onload = function() {
+            const targetUrl = "https://45d.cn"; // 目标 URL
+            const fallbackUrl = "/index.htm"; // 备用页面
+            checkUrl(targetUrl, fallbackUrl);
+        };
+    </script>
 </head>
 <body>
-    <h1>欢迎访问我的网站！</h1>
-    <p>i.ddaj.com</p>
+    <p>正在检查服务器状态，请稍候...</p>
 </body>
 </html>
