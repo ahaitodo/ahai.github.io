@@ -2,19 +2,34 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>跳转检测中...</title>
     <script>
-        // 立即尝试强制跳转（无历史记录）
-        window.location.replace('https://i.ddaj.com');
+        // 目标网站URL和维护页面URL
+        const TARGET_URL = 'https://baidu.com';
+        const FALLBACK_URL = '/weihu.htm';
 
-        // 设定跳转超时检测（1秒）
-        setTimeout(function() {
-            // 如果当前页面未被替换，说明跳转失败
-            window.location.href = '/weihu.htm';
+        // 尝试通过fetch检测目标是否可达
+        fetch(TARGET_URL, {
+            method: 'HEAD',
+            mode: 'no-cors',
+            cache: 'no-cache'
+        })
+        .then(() => {
+            // 请求成功到达服务器，跳转到目标
+            window.location.replace(TARGET_URL);
+        })
+        .catch(() => {
+            // 网络错误，跳转到维护页面
+            window.location.replace(FALLBACK_URL);
+        });
+
+        // 设置超时，防止fetch长时间挂起
+        setTimeout(() => {
+            window.location.replace(FALLBACK_URL);
         }, 1000);
     </script>
 </head>
 <body>
-<!-- 完全空白页面 -->
+<!-- 空白页面 -->
 </body>
 </html>
