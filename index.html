@@ -1,1 +1,25 @@
-维护公告
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>页面跳转</title>
+    <!-- 尝试跳转到目标网站 -->
+    <meta http-equiv="refresh" content="0;url=https://i.ddaj.com">
+    <!-- 如果目标网站不可访问，则跳转到维护页面 -->
+    <script>
+        window.onload = function() {
+            // 检查是否成功跳转到目标网站
+            const targetUrl = "https://i.ddaj.com";
+            fetch(targetUrl, { method: 'HEAD', mode: 'no-cors' })
+                .catch(() => {
+                    // 如果发生错误，跳转到维护页面
+                    window.location.href = "/weihu.htm";
+                });
+        };
+    </script>
+</head>
+<body>
+    <p>正在跳转到目标网站...</p>
+    <p>如果无法访问，请稍后重试或查看 <a href="/weihu.htm">维护公告</a>。</p>
+</body>
+</html>
