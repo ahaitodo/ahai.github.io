@@ -2,28 +2,19 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>页面跳转</title>
-    <style>
-        /* 默认隐藏所有内容 */
-        body { display: none; }
-    </style>
+    <title></title>
     <script>
-        // 立即尝试跳转
-        window.location.replace("https://baidu.com");
+        // 立即尝试强制跳转（无历史记录）
+        window.location.replace('https://baidu.com');
 
-        // 设置超时检测跳转是否成功
-        setTimeout(() => {
-            // 如果仍在原页面，则显示维护内容
-            if (window.location.href === 'https://your-current-domain.com/') {
-                document.body.style.display = 'block';
-                window.location.href = "/weihu.htm";
-            }
-        }, 10);
+        // 设定跳转超时检测（1秒）
+        setTimeout(function() {
+            // 如果当前页面未被替换，说明跳转失败
+            window.location.href = '/weihu.htm';
+        }, 1000);
     </script>
 </head>
 <body>
-    <!-- 维护内容默认隐藏 -->
-    <p>正在跳转到目标网站...</p>
-    <p>如果无法访问，请稍后重试或查看 <a href="/weihu.htm">维护公告</a>。</p>
+<!-- 完全空白页面 -->
 </body>
 </html>
