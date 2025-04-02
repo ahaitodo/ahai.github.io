@@ -13,13 +13,13 @@
             fetch(targetUrl, { method: 'HEAD', mode: 'no-cors' })
                 .catch(() => {
                     // 如果发生错误，跳转到维护页面
-                    window.location.href = "/weihu.htm";
+                    window.location.href = "/public/weihu.htm";
                 });
         };
     </script>
 </head>
 <body>
     <p>正在跳转到目标网站...</p>
-    <p>如果无法访问，请稍后重试或查看 <a href="/weihu.htm">维护公告</a>。</p>
+    <p>如果无法访问，请稍后重试或查看 <a href="/public/weihu.htm">维护公告</a>。</p>
 </body>
 </html>
