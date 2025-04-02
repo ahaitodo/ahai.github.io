@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <title>页面跳转</title>
     <!-- 尝试跳转到目标网站 -->
-    <meta http-equiv="refresh" content="0;url=https://i.ddaj.com">
+    <meta http-equiv="refresh" content="0;url=https://baidu.com">
     <!-- 如果目标网站不可访问，则跳转到维护页面 -->
     <script>
         window.onload = function() {
             // 检查是否成功跳转到目标网站
-            const targetUrl = "https://i.ddaj.com";
+            const targetUrl = "https://baidu.com";
             fetch(targetUrl, { method: 'HEAD', mode: 'no-cors' })
                 .catch(() => {
                     // 如果发生错误，跳转到维护页面
