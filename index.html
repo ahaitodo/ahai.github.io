@@ -1,8 +1,27 @@
-<picture>
-  <!-- AVIF 格式（更优压缩） -->
-  <source srcset="jpg.avif" type="image/avif">
-  <!-- WebP 格式 -->
-  <source srcset="jpg.webp" type="image/webp">
-  <!-- JPG 回退 -->
-  <img src="jpg.jpg" alt="AVIF 示例">
-</picture>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>多格式图片兼容测试</title>
+</head>
+<body>
+
+  <!-- 图片1：优先加载 .wp2（WebP v2） -->
+  <picture>
+    <!-- WebP v2（需要确认浏览器支持） -->
+    <source srcset="jpg.wp2" type="image/webp2">
+    <!-- 标准 WebP -->
+    <source srcset="jpg.webp" type="image/webp">
+    <!-- 最终回退到 JPG -->
+    <img src="jpg.jpg" alt="图片1示例">
+  </picture>
+
+  <!-- 图片2：同上 -->
+  <picture>
+    <source srcset="jpg2.wp2" type="image/webp2">
+    <source srcset="jpg2.webp" type="image/webp">
+    <img src="jpg2.jpg" alt="图片2示例">
+  </picture>
+
+</body>
+</html>
