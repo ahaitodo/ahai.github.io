@@ -1,156 +1,62 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>图片加载效果测试</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        
-        .image-container {
-            margin: 30px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .image-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin: 20px 0;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: #eee;
-        }
-        
-        .placeholder {
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%; /* 16:9 比例 */
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        
-        .placeholder::before {
-            content: "图片加载中...";
-            color: #666;
-            font-size: 18px;
-        }
-        
-        .lozad {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: filter 0.5s ease, opacity 0.5s ease;
-            opacity: 0;
-        }
-        
-        .lozad.loaded {
-            opacity: 1;
-            filter: blur(0);
-        }
-        
-        .lozad:not(.loaded) {
-            filter: blur(10px);
-        }
-        
-        .image-caption {
-            margin-top: 10px;
-            font-style: italic;
-            color: #666;
-            text-align: center;
-        }
-        
-        .image-type {
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #444;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>当贝图片加载优化测试</title>
+  
+  <!-- 引入 lozad.js -->
+  <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+
+  <!-- CSS 模糊过渡样式 -->
+  <style>
+    .lazyload {
+      width: 600px;   /* 根据实际尺寸调整 */
+      height: 400px;  /* 根据实际尺寸调整 */
+      background: #f0f0f0; /* 占位符背景色 */
+      filter: blur(10px);
+      transition: filter 0.5s ease;
+    }
+
+    .lazyload.loaded {
+      filter: blur(0);
+    }
+  </style>
 </head>
 <body>
-    <h1>图片加载效果测试</h1>
-    
-    <!-- 第一个图片容器 - JPG 转换为 WebP -->
-    <div class="image-container">
-        <div class="image-type">WebP 格式 (原图为 JPG)</div>
-        <div class="image-wrapper">
-            <div class="placeholder"></div>
-            <img class="lozad" 
-                 data-src="https://www.lyej.cn/jpg.jpg" 
-                 alt="示例图片 - 原图为JPG"
-                 width="800"
-                 height="450"
-                 loading="lazy">
-        </div>
-        <div class="image-caption">使用 WebP 格式和懒加载效果</div>
-    </div>
-    
-    <!-- 第二个图片容器 - PNG 转换为 WebP -->
-    <div class="image-container">
-        <div class="image-type">WebP 格式 (原图为 PNG)</div>
-        <div class="image-wrapper">
-            <div class="placeholder"></div>
-            <img class="lozad" 
-                 data-src="https://www.lyej.cn/png.png" 
-                 alt="示例图片 - 原图为PNG"
-                 width="800"
-                 height="450"
-                 loading="lazy">
-        </div>
-        <div class="image-caption">使用 WebP 格式和懒加载效果</div>
-    </div>
 
-    <!-- 引入 lozad.js 库 -->
-    <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // 初始化 lozad
-            const observer = lozad('.lozad', {
-                loaded: function(el) {
-                    // 图片加载完成后移除模糊效果
-                    el.classList.add('loaded');
-                    // 移除占位符
-                    const placeholder = el.previousElementSibling;
-                    if (placeholder && placeholder.classList.contains('placeholder')) {
-                        placeholder.style.display = 'none';
-                    }
-                },
-                error: function(el) {
-                    // 加载失败处理
-                    console.error('图片加载失败:', el.dataset.src);
-                    el.alt = '图片加载失败';
-                    el.style.opacity = '1';
-                    el.style.filter = 'blur(0)';
-                }
-            });
-            observer.observe();
-            
-            // 监听滚动事件，确保懒加载正常工作
-            window.addEventListener('scroll', function() {
-                observer.observe();
-            });
-        });
-    </script>
+  <!-- WebP 图片（JPG 回退） -->
+  <picture>
+    <source srcset="data:image/webp;base64,UklGRlIAAABXRUJQVlA4WAoAAAAQAAAAKwAALwAAQUxQSFIAAAABBxAREQxAABpjbWtqbgAAABWQj1NErlM4Hwv/5QAAAABJRU5ErkJggg==" 
+            data-src="https://www.lyej.cn/jpg.webp" 
+            type="image/webp">
+    <img class="lazyload"
+         data-src="https://www.lyej.cn/jpg.jpg"
+         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+         alt="JPG 图片示例">
+  </picture>
+
+  <!-- WebP 图片（PNG 回退） -->
+  <picture>
+    <source srcset="data:image/webp;base64,UklGRlIAAABXRUJQVlA4WAoAAAAQAAAAKwAALwAAQUxQSFIAAAABBxAREQxAABpjbWtqbgAAABWQj1NErlM4Hwv/5QAAAABJRU5ErkJggg==" 
+            data-src="https://www.lyej.cn/png.webp" 
+            type="image/webp">
+    <img class="lazyload"
+         data-src="https://www.lyej.cn/png.png"
+         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+         alt="PNG 图片示例">
+  </picture>
+
+  <!-- 初始化 lozad -->
+  <script>
+    const observer = lozad('.lazyload', {
+      rootMargin: '300px 0px',  // 提前 300px 加载
+      threshold: 0.1,           // 进入视口 10% 时触发
+      loaded: function(el) {
+        el.classList.add('loaded'); // 添加加载完成状态
+      }
+    });
+    observer.observe();
+  </script>
+
 </body>
 </html>
