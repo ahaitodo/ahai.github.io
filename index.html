@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>当贝图片加载优化测试</title>
-  
   <!-- 引入 lozad.js -->
   <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
-
   <!-- CSS 模糊过渡样式 -->
   <style>
     .lazyload {
@@ -16,7 +14,6 @@
       filter: blur(10px);
       transition: filter 0.5s ease;
     }
-
     .lazyload.loaded {
       filter: blur(0);
     }
@@ -24,8 +21,9 @@
 </head>
 <body>
 
-  <!-- WebP 图片（JPG 回退） -->
+  <!-- JPG 图片（WebP 优先） -->
   <picture>
+    <!-- 如果无 WebP 文件，删除 <source> 标签 -->
     <source srcset="data:image/webp;base64,UklGRlIAAABXRUJQVlA4WAoAAAAQAAAAKwAALwAAQUxQSFIAAAABBxAREQxAABpjbWtqbgAAABWQj1NErlM4Hwv/5QAAAABJRU5ErkJggg==" 
             data-src="jpg.webp" 
             type="image/webp">
@@ -35,9 +33,10 @@
          alt="JPG 图片示例">
   </picture>
 
-  <!-- WebP 图片（PNG 回退） -->
+  <!-- PNG 图片（WebP 优先） -->
   <picture>
-    <source srcset="data:image/webp;base64,UklGRlIAAABXRUJQVlA4WAoAAAAQAAAAKwAALwAAQUxQSFIAAAABBxAREQxAABpjbWtqbgAAABWQj1NErlM4Hwv/5QAAAABJRU5ErkJggg==" 
+    <!-- 如果无 WebP 文件，删除 <source> 标签 -->
+    <source srcset="data:image/webp;base64,UklGRlIAAABXRUJQVlA4WAOAAABQAgCdASoQABAAAgA0JbACdEf/2qPwAP7c6QAA/uhZ4AA=" 
             data-src="png.webp" 
             type="image/webp">
     <img class="lazyload"
@@ -49,10 +48,10 @@
   <!-- 初始化 lozad -->
   <script>
     const observer = lozad('.lazyload', {
-      rootMargin: '300px 0px',  // 提前 300px 加载
-      threshold: 0.1,           // 进入视口 10% 时触发
+      rootMargin: '300px 0px',
+      threshold: 0.1,
       loaded: function(el) {
-        el.classList.add('loaded'); // 添加加载完成状态
+        el.classList.add('loaded');
       }
     });
     observer.observe();
