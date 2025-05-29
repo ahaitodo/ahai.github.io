@@ -26,11 +26,12 @@
     }
     </script>
 
+    <!-- 基础样式 -->
     <style>
         :root {
             --primary-color: #FF6B6B;
             --text-dark: #2D2D2D;
-            --content-max-width: 1200px;
+            --iframe-height: 80vh; /* 视口高度80% */
         }
 
         * {
@@ -43,10 +44,10 @@
         body {
             line-height: 1.6;
             color: var(--text-dark);
-            padding-top: 80px;
+            padding-top: 80px; /* 防止内容被固定头部遮挡 */
         }
 
-        /* 优化后的固定头部 */
+        /* 固定头部样式 */
         header {
             background: #fff;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -54,65 +55,45 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            flex-grow: 1;
-            justify-content: flex-end;
+            height: 60px; /* 与padding-top对应 */
         }
 
         /* 内容容器 */
         .content-wrapper {
-            max-width: var(--content-max-width);
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            position: relative;
         }
 
-        /* 嵌入内容容器 */
-        .embedded-content {
+        /* 外部内容嵌入样式 */
+        .external-content {
+            border: 1px solid #eee;
             border-radius: 8px;
             overflow: hidden;
             margin: 2rem 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        /* 自适应iframe */
-        .responsive-iframe {
+        iframe {
             width: 100%;
-            height: 0;
-            padding-bottom: 56.25%; /* 16:9比例 */
-            position: relative;
+            height: var(--iframe-height);
             border: none;
+            transition: height 0.3s ease;
         }
 
-        .responsive-iframe iframe {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-
-        /* 移动端优化 */
+        /* 移动端适配 */
         @media (max-width: 768px) {
+            :root {
+                --iframe-height: 50vh;
+            }
+            
             header {
-                padding: 0 1rem;
                 height: 50px;
             }
             
-            .nav-links {
-                gap: 1rem;
-            }
-            
-            .content-wrapper {
-                padding: 1rem;
+            body {
+                padding-top: 50px;
             }
         }
     </style>
@@ -122,37 +103,38 @@
         <nav>
             <div class="logo">LYEJ耳机精选</div>
             <div class="nav-links">
-                <a href="#home" class="nav-item">华为耳机</a>
-                <a href="#best-sellers" class="nav-item">无线耳机</a>
-                <a href="#categories" class="nav-item">联想耳机</a>
-                <a href="#apple" class="nav-item">苹果耳机</a>
+                <a href="#home">首页</a>
+                <a href="#best-sellers">热销榜</a>
+                <a href="#categories">产品分类</a>
+                <a href="#about">评测标准</a>
             </div>
         </nav>
     </header>
 
     <main class="content-wrapper">
+        <!-- 原有内容保持不变 -->
         <section class="hero">
-            <div class="hero-content">
+            <div class="hero-content" style="padding: 4rem 2rem">
                 <h1>专业蓝牙耳机评测</h1>
                 <p>基于500+小时实测数据，提供真实用户反馈与专业参数对比</p>
+                <img src="https://via.placeholder.com/800x400" alt="耳机评测场景" style="max-width:100%; border-radius:8px; margin:2rem 0">
             </div>
         </section>
 
-        <!-- 优化后的嵌入内容 -->
-        <section class="embedded-content">
-            <div class="responsive-iframe">
-                <iframe 
-                    src="https://www.dacu.net/?r=search?kw=蓝牙耳机"
-                    title="蓝牙耳机搜索结果"
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                    sandbox="allow-scripts allow-same-origin"
-                ></iframe>
-            </div>
+        <!-- 外部内容嵌入 -->
+        <section class="external-content">
+            <iframe 
+                src="https://www.dacu.net/?r=search?kw=蓝牙耳机"
+                title="蓝牙耳机搜索结果"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                sandbox="allow-scripts allow-same-origin"
+            ></iframe>
         </section>
 
-        <!-- 产品网格 -->
+        <!-- 原有产品网格等内容 -->
         <section class="product-grid">
+            <!-- 产品卡片示例 -->
             <div class="product-card">
                 <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200')"></div>
                 <h3>华为 FreeBuds Pro 3</h3>
@@ -168,32 +150,10 @@
     </main>
 
     <footer>
-        <div style="max-width: var(--content-max-width); margin:auto; padding:2rem; text-align:center">
+        <div style="max-width:1200px; margin:auto; padding:2rem; text-align:center">
             <p>© 2025 LYEJ耳机精选 | 京东联盟合作伙伴</p>
             <p>数据来源：京东商城公开信息 | 隐私政策</p>
         </div>
     </footer>
-
-    <script>
-        // 菜单点击处理
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = item.getAttribute('href').substring(1);
-                loadContent(targetId);
-            });
-        });
-
-        // 内容加载函数
-        async function loadContent(sectionId) {
-            try {
-                const response = await fetch(`/api/content/${sectionId}.json`);
-                const data = await response.json();
-                document.querySelector('.content-wrapper').innerHTML = data.html;
-            } catch (error) {
-                console.error('内容加载失败:', error);
-            }
-        }
-    </script>
 </body>
 </html>
