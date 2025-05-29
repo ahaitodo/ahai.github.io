@@ -3,201 +3,380 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LYEJ京东蓝牙耳机精选 | 降噪续航实测推荐</title>
-    <meta name="description" content="京东联盟官方精选！覆盖200-2000元全价位蓝牙耳机，专业评测团队实测降噪深度达42dB，续航最长50小时。提供苹果/华为/小米全品牌适配方案">
-    <meta name="keywords" content="蓝牙耳机推荐,京东降噪耳机,高性价比耳机,运动蓝牙耳机,游戏耳机评测">
-    
-    <!-- 结构化数据 -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "LYEJ京东蓝牙耳机精选",
-      "description": "专业蓝牙耳机评测与推荐平台",
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [{
-          "@type": "ListItem",
-          "position": 1,
-          "name": "首页",
-          "item": "https://lyej.cn"
-        }]
-      }
-    }
-    </script>
-
-    <!-- 基础样式 -->
+    <meta name="keywords" content="蓝牙耳机,华为蓝牙耳机,小米蓝牙耳机,苹果蓝牙耳机,京东蓝牙耳机,无线耳机,降噪耳机,运动耳机">
+    <meta name="description" content="www.lyej.cn - 专业京东蓝牙耳机选购平台，提供华为、小米、苹果等品牌蓝牙耳机精选推荐，京东正品保障，享受高额返利。">
+    <title>蓝牙耳机精选_京东蓝牙耳机推荐_www.lyej.cn</title>
     <style>
-        :root {
-            --primary-color: #FF6B6B;
-            --text-dark: #2D2D2D;
-            --iframe-height: calc(100vh - 80px); /* 全屏高度减去头部高度 */
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: "Microsoft YaHei", Arial, sans-serif;
         }
-
+        
         body {
-            line-height: 1.6;
-            color: var(--text-dark);
-            padding-top: 60px; /* 固定头部高度 */
-            overflow: hidden; /* 隐藏页面滚动条 */
+            background-color: #f5f5f5;
+            color: #333;
+            padding-top: 60px;
         }
-
-        /* 固定头部样式 */
-        header {
-            background: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        
+        .header {
             position: fixed;
-            width: 100%;
             top: 0;
-            z-index: 1000;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: color 0.2s;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
             left: 0;
             width: 100%;
-            height: 2px;
-            background: var(--primary-color);
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 10px 0;
         }
-
-        /* 外部内容嵌入样式 */
-        .external-content {
-            width: 100%;
-            height: var(--iframe-height);
-            position: relative;
-            overflow: hidden;
+        
+        .container {
+            width: 1200px;
+            margin: 0 auto;
         }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+        
+        .logo {
+            float: left;
+            font-size: 24px;
+            font-weight: bold;
+            color: #e4393c;
+            line-height: 40px;
+        }
+        
+        .nav {
+            float: right;
+        }
+        
+        .nav ul {
+            list-style: none;
+        }
+        
+        .nav ul li {
+            float: left;
+            margin-left: 30px;
+        }
+        
+        .nav ul li a {
             display: block;
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
         }
-
-        /* 隐藏iframe滚动条 */
-        iframe::-webkit-scrollbar {
-            display: none;
+        
+        .nav ul li a:hover {
+            color: #e4393c;
         }
-
-        /* 移动端适配 */
-        @media (max-width: 960px) {
-            body {
-                padding-top: 50px;
+        
+        .banner {
+            height: 400px;
+            background: linear-gradient(135deg, #4a90e2, #e4393c);
+            color: #fff;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .banner-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .banner-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .search-box {
+            width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            height: 50px;
+            padding: 0 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+        }
+        
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            width: 40px;
+            height: 40px;
+            background: #e4393c;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .main-content {
+            padding: 30px 0;
+        }
+        
+        .product-category {
+            margin-bottom: 40px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .category-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .product-item {
+            width: 23%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-img img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .product-info {
+            padding: 15px;
+        }
+        
+        .product-title {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+            height: 48px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        
+        .product-price {
+            color: #e4393c;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .product-btn {
+            display: block;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: #e4393c;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .product-btn:hover {
+            background-color: #c03532;
+        }
+        
+        .footer {
+            background-color: #333;
+            color: #999;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .footer-links {
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: #999;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: #fff;
+        }
+        
+        .clearfix:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        @media (max-width: 1200px) {
+            .container {
+                width: 95%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .product-item {
+                width: 48%;
             }
             
-            header {
-                height: 50px;
-                padding: 0 1rem;
+            .banner-content h1 {
+                font-size: 36px;
             }
             
-            .nav-links {
-                gap: 1rem;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                padding-bottom: 0.5rem;
+            .banner-content p {
+                font-size: 16px;
             }
             
-            .nav-links::-webkit-scrollbar {
-                display: none;
+            .search-box {
+                width: 90%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .product-item {
+                width: 100%;
+            }
+            
+            .nav ul li {
+                margin-left: 15px;
+            }
+            
+            .nav ul li a {
+                font-size: 14px;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">LYEJ耳机精选</div>
-            <div class="nav-links">
-                <a href="#" data-search="蓝牙耳机" class="active">全部蓝牙耳机</a>
-                <a href="#" data-search="OPPO蓝牙耳机">OPPO蓝牙耳机</a>
-                <a href="#" data-search="华为蓝牙耳机">华为蓝牙耳机</a>
-                <a href="#" data-search="小米蓝牙耳机">小米蓝牙耳机</a>
-                <a href="#" data-search="苹果蓝牙耳机">苹果蓝牙耳机</a>
-            </div>
-        </nav>
+    <!-- 页头导航 -->
+    <header class="header">
+        <div class="container clearfix">
+            <div class="logo">蓝牙耳机精选</div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#brand">品牌推荐</a></li>
+                    <li><a href="#type">类型推荐</a></li>
+                    <li><a href="#guide">选购指南</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-
-    <main class="content-wrapper">
-        <!-- 外部内容嵌入 -->
-        <section class="external-content">
-            <iframe 
-                id="searchFrame"
-                src="https://www.dacu.net/?r=search?kw=蓝牙耳机"
-                title="蓝牙耳机搜索结果"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                sandbox="allow-scripts allow-same-origin"
-            ></iframe>
-        </section>
-    </main>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-links a[data-search]');
-            const searchFrame = document.getElementById('searchFrame');
+    
+    <!-- 首页内容 -->
+    <main class="main-content">
+        <div class="container">
+            <!-- 横幅区域 -->
+            <section class="banner" id="home">
+                <div class="banner-content">
+                    <h1>京东蓝牙耳机精选</h1>
+                    <p>专业推荐华为、小米、苹果等品牌蓝牙耳机，正品保障，享受高额返利</p>
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="搜索您想要的蓝牙耳机...">
+                        <button class="search-btn">搜</button>
+                    </div>
+                </div>
+            </section>
             
-            // 为所有导航链接添加点击事件
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
+            <!-- 品牌推荐 -->
+            <section class="product-category" id="brand">
+                <h2 class="category-title">品牌推荐</h2>
+                <div class="product-list">
+                    <!-- 华为蓝牙耳机 -->
+                    <div class="product-item">
+                        <div class="product-img">
+                            <img src="https://img10.360buyimg.com/mobilecms/s360x360_jfs/t1/186285/24/12848/60424/60d5c4e5E5a3c7a3a/0d0c0a3d8a8d9c5c.jpg" alt="华为蓝牙耳机">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">华为FreeBuds Pro 主动降噪蓝牙耳机</h3>
+                            <p class="product-price">¥699</p>
+                            <a href="https://www.dacu.net/?r=search?kw=华为蓝牙耳机&utm_source=www.lyej.cn&union_id=10170" class="product-btn" target="_blank">查看详情</a>
+                        </div>
+                    </div>
                     
-                    // 更新活动状态
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    this.classList.add('active');
+                    <!-- 小米蓝牙耳机 -->
+                    <div class="product-item">
+                        <div class="product-img">
+                            <img src="https://img10.360buyimg.com/mobilecms/s360x360_jfs/t1/193850/28/13676/48565/60e0a0d3Ea3d3d3d3/7a7a7a7a7a7a7a7a.jpg" alt="小米蓝牙耳机">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">小米Air 2 Pro 真无线蓝牙耳机</h3>
+                            <p class="product-price">¥399</p>
+                            <a href="https://www.dacu.net/?r=search?kw=小米蓝牙耳机&utm_source=www.lyej.cn&union_id=10170" class="product-btn" target="_blank">查看详情</a>
+                        </div>
+                    </div>
                     
-                    const searchTerm = this.getAttribute('data-search');
-                    searchFrame.src = `https://www.dacu.net/?r=search?kw=${encodeURIComponent(searchTerm)}`;
-                });
-            });
+                    <!-- 苹果蓝牙耳机 -->
+                    <div class="product-item">
+                        <div class="product-img">
+                            <img src="https://img10.360buyimg.com/mobilecms/s360x360_jfs/t1/171702/25/13210/60424/60d5c4e5E5a3c7a3a/0d0c0a3d8a8d9c5c.jpg" alt="苹果蓝牙耳机">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Apple AirPods Pro 主动降噪无线蓝牙耳机</h3>
+                            <p class="product-price">¥1499</p>
+                            <a href="https://www.dacu.net/?r=search?kw=苹果蓝牙耳机&utm_source=www.lyej.cn&union_id=10170" class="product-btn" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                    
+                    <!-- 索尼蓝牙耳机 -->
+                    <div class="product-item">
+                        <div class="product-img">
+                            <img src="https://img10.360buyimg.com/mobilecms/s360x360_jfs/t1/186285/24/12848/60424/60d5c4e5E5a3c7a3a/0d0c0a3d8a8d9c5c.jpg" alt="索尼蓝牙耳机">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">索尼WF-1000XM4 真无线蓝牙降噪耳机</h3>
+                            <p class="product-price">¥1299</p>
+                            <a href="https://www.dacu.net/?r=search?kw=索尼蓝牙耳机&utm_source=www.lyej.cn&union_id=10170" class="product-btn" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
             
-            // 默认激活第一个链接
-            navLinks[0].classList.add('active');
-        });
-    </script>
-</body>
-</html>
+            <!-- 类型推荐 -->
+            <section class="product-category" id="type">
+                <h2 class="category-title">类型推荐</h2>
+                <div class="product-list">
+                    <!-- 降噪耳机 -->
+                    <div class="product-item">
+                        <div class="product-img">
+                            <img src="https://img10.360buyimg.com/mobilecms/s360x360_jfs/t1/186285/24/12848/60424/60d5c4e5E5a3c7a3a/0d0c0a3d8a8d9c5c.jpg" alt="降噪蓝牙耳机">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">主动降噪蓝牙耳机推荐</h3>
+                            <p class="product-price">¥599起</p>
+                            <a href="https://www.dacu.net/?r=search?kw=降噪蓝牙耳机&utm_source=www.lyej.cn&union_id=10170" class="product-btn" target="_blank
