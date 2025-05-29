@@ -31,6 +31,7 @@
             --primary-color: #FF6B6B;
             --text-dark: #2D2D2D;
             --content-max-width: 1200px;
+            --card-gap: 2rem;
         }
 
         * {
@@ -81,23 +82,15 @@
             margin: 2rem 0;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             background: #fff;
+            transition: all 0.3s ease;
         }
 
-        /* 自适应iframe */
-        .responsive-iframe {
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%; /* 16:9比例 */
-            position: relative;
-            border: none;
-        }
-
-        .responsive-iframe iframe {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
+        /* 自适应内容布局 */
+        .embedded-content > * {
+            width: 100% !important;
+            height: auto !important;
+            margin: 0 !important;
+            padding: 0 !important;
         }
 
         /* 移动端优化 */
@@ -109,10 +102,17 @@
             
             .nav-links {
                 gap: 1rem;
+                flex-direction: column;
+                position: absolute;
+                right: 0;
+                top: 60px;
+                background: #fff;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                display: none;
             }
-            
-            .content-wrapper {
-                padding: 1rem;
+
+            .nav-links.active {
+                display: flex;
             }
         }
     </style>
@@ -122,10 +122,10 @@
         <nav>
             <div class="logo">LYEJ耳机精选</div>
             <div class="nav-links">
-                <a href="#home" class="nav-item">华为耳机</a>
-                <a href="#best-sellers" class="nav-item">无线耳机</a>
-                <a href="#categories" class="nav-item">联想耳机</a>
-                <a href="#apple" class="nav-item">苹果耳机</a>
+                <a href="#" data-category="huawei">华为耳机</a>
+                <a href="#" data-category="wireless">无线耳机</a>
+                <a href="#" data-category="lenovo">联想耳机</a>
+                <a href="#" data-category="apple">苹果耳机</a>
             </div>
         </nav>
     </header>
@@ -138,33 +138,8 @@
             </div>
         </section>
 
-        <!-- 优化后的嵌入内容 -->
-        <section class="embedded-content">
-            <div class="responsive-iframe">
-                <iframe 
-                    src="https://www.dacu.net/?r=search?kw=蓝牙耳机"
-                    title="蓝牙耳机搜索结果"
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                    sandbox="allow-scripts allow-same-origin"
-                ></iframe>
-            </div>
-        </section>
-
-        <!-- 产品网格 -->
-        <section class="product-grid">
-            <div class="product-card">
-                <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200')"></div>
-                <h3>华为 FreeBuds Pro 3</h3>
-                <p>¥1499</p>
-                <div class="features">
-                    <span>🔥 降噪深度：42dB</span>
-                    <span>🎧 续航：8小时</span>
-                    <span>📱 兼容：鸿蒙/安卓/iOS</span>
-                </div>
-                <a href="#" class="cta-button">立即购买</a>
-            </div>
-        </section>
+        <!-- 动态内容容器 -->
+        <div id="dynamic-content"></div>
     </main>
 
     <footer>
@@ -175,25 +150,56 @@
     </footer>
 
     <script>
-        // 菜单点击处理
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', (e) => {
+        // 动态加载内容
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', async (e) => {
                 e.preventDefault();
-                const targetId = item.getAttribute('href').substring(1);
-                loadContent(targetId);
+                const category = e.target.dataset.category;
+                const dynamicContent = document.getElementById('dynamic-content');
+                
+                // 显示加载状态
+                dynamicContent.innerHTML = '<div class="loading">内容加载中...</div>';
+                
+                try {
+                    // 使用Fetch API获取内容
+                    const response = await fetch(`/api/content/${category}.json`);
+                    const data = await response.json();
+                    
+                    // 清除现有内容
+                    dynamicContent.innerHTML = '';
+                    
+                    // 创建容器
+                    const container = document.createElement('div');
+                    container.className = 'embedded-content';
+                    container.innerHTML = data.html;
+                    
+                    // 样式重置
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        .embedded-content img {
+                            width: 100% !important;
+                            height: auto !important;
+                        }
+                        .embedded-content iframe {
+                            border: none !important;
+                            overflow: hidden !important;
+                        }
+                    `;
+                    container.appendChild(style);
+                    
+                    dynamicContent.appendChild(container);
+                } catch (error) {
+                    dynamicContent.innerHTML = '<div class="error">内容加载失败，请稍后重试</div>';
+                }
             });
         });
 
-        // 内容加载函数
-        async function loadContent(sectionId) {
-            try {
-                const response = await fetch(`/api/content/${sectionId}.json`);
-                const data = await response.json();
-                document.querySelector('.content-wrapper').innerHTML = data.html;
-            } catch (error) {
-                console.error('内容加载失败:', error);
+        // 移动端菜单切换
+        document.querySelector('.nav-links').addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.currentTarget.classList.toggle('active');
             }
-        }
+        });
     </script>
 </body>
 </html>
