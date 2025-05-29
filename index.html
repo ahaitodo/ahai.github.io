@@ -31,7 +31,7 @@
         :root {
             --primary-color: #FF6B6B;
             --text-dark: #2D2D2D;
-            --iframe-height: 50vh; /* 视口高度80% */
+            --iframe-height: calc(100vh - 80px); /* 全屏高度减去头部高度 */
         }
 
         * {
@@ -44,7 +44,8 @@
         body {
             line-height: 1.6;
             color: var(--text-dark);
-            padding-top: 80px; /* 防止内容被固定头部遮挡 */
+            padding-top: 60px; /* 固定头部高度 */
+            overflow: hidden; /* 隐藏页面滚动条 */
         }
 
         /* 固定头部样式 */
@@ -55,15 +56,19 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            height: 60px; /* 与padding-top对应 */
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
-            height: 100%;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .logo {
@@ -81,61 +86,64 @@
             color: var(--text-dark);
             font-weight: 500;
             transition: color 0.2s;
+            padding: 0.5rem 0;
+            position: relative;
         }
 
         .nav-links a:hover {
             color: var(--primary-color);
         }
 
-        /* 内容容器 */
-        .content-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
         }
 
         /* 外部内容嵌入样式 */
         .external-content {
-            border: 1px solid #eee;
-            border-radius: 8px;
+            width: 100%;
+            height: var(--iframe-height);
+            position: relative;
             overflow: hidden;
-            margin: 2rem 0;
-            background: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         iframe {
             width: 100%;
-            height: var(--iframe-height);
+            height: 100%;
             border: none;
-            transition: height 0.3s ease;
+            display: block;
+        }
+
+        /* 隐藏iframe滚动条 */
+        iframe::-webkit-scrollbar {
+            display: none;
         }
 
         /* 移动端适配 */
         @media (max-width: 960px) {
-            :root {
-                --iframe-height: 100vh;
-            }
-            
-            header {
-                height: 50px;
-            }
-            
             body {
                 padding-top: 50px;
             }
             
-            nav {
+            header {
+                height: 50px;
                 padding: 0 1rem;
-                flex-direction: column;
-                gap: 0.5rem;
             }
             
             .nav-links {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.5rem;
-                width: 100%;
+                gap: 1rem;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 0.5rem;
+            }
+            
+            .nav-links::-webkit-scrollbar {
+                display: none;
             }
         }
     </style>
@@ -145,7 +153,7 @@
         <nav>
             <div class="logo">LYEJ耳机精选</div>
             <div class="nav-links">
-                <a href="#" data-search="蓝牙耳机">全部蓝牙耳机</a>
+                <a href="#" data-search="蓝牙耳机" class="active">全部蓝牙耳机</a>
                 <a href="#" data-search="OPPO蓝牙耳机">OPPO蓝牙耳机</a>
                 <a href="#" data-search="华为蓝牙耳机">华为蓝牙耳机</a>
                 <a href="#" data-search="小米蓝牙耳机">小米蓝牙耳机</a>
@@ -168,13 +176,6 @@
         </section>
     </main>
 
-    <footer>
-        <div style="max-width:1200px; margin:auto; padding:2rem; text-align:center">
-            <p>© 2025 LYEJ耳机精选 | 京东联盟合作伙伴</p>
-            <p>数据来源：京东商城公开信息 | 隐私政策</p>
-        </div>
-    </footer>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const navLinks = document.querySelectorAll('.nav-links a[data-search]');
@@ -184,20 +185,18 @@
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
+                    
+                    // 更新活动状态
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
                     const searchTerm = this.getAttribute('data-search');
                     searchFrame.src = `https://www.dacu.net/?r=search?kw=${encodeURIComponent(searchTerm)}`;
-                    
-                    // 可选：更新URL而不重新加载页面
-                    // history.pushState(null, null, `?search=${encodeURIComponent(searchTerm)}`);
                 });
             });
             
-            // 可选：处理浏览器前进/后退按钮
-            // window.addEventListener('popstate', function() {
-            //     const urlParams = new URLSearchParams(window.location.search);
-            //     const searchTerm = urlParams.get('search') || '蓝牙耳机';
-            //     searchFrame.src = `https://www.dacu.net/?r=search?kw=${encodeURIComponent(searchTerm)}`;
-            // });
+            // 默认激活第一个链接
+            navLinks[0].classList.add('active');
         });
     </script>
 </body>
