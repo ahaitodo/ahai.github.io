@@ -1,15 +1,159 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>多格式图片兼容测试</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LYEJ京东蓝牙耳机精选 | 降噪续航实测推荐</title>
+    <meta name="description" content="京东联盟官方精选！覆盖200-2000元全价位蓝牙耳机，专业评测团队实测降噪深度达42dB，续航最长50小时。提供苹果/华为/小米全品牌适配方案">
+    <meta name="keywords" content="蓝牙耳机推荐,京东降噪耳机,高性价比耳机,运动蓝牙耳机,游戏耳机评测">
+    
+    <!-- 结构化数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "LYEJ京东蓝牙耳机精选",
+      "description": "专业蓝牙耳机评测与推荐平台",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://lyej.cn"
+        }]
+      }
+    }
+    </script>
+
+    <!-- 基础样式 -->
+    <style>
+        :root {
+            --primary-color: #FF6B6B;
+            --text-dark: #2D2D2D;
+            --iframe-height: 80vh; /* 视口高度80% */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+            padding-top: 80px; /* 防止内容被固定头部遮挡 */
+        }
+
+        /* 固定头部样式 */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            height: 60px; /* 与padding-top对应 */
+        }
+
+        /* 内容容器 */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* 外部内容嵌入样式 */
+        .external-content {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 2rem 0;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        iframe {
+            width: 100%;
+            height: var(--iframe-height);
+            border: none;
+            transition: height 0.3s ease;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            :root {
+                --iframe-height: 50vh;
+            }
+            
+            header {
+                height: 50px;
+            }
+            
+            body {
+                padding-top: 50px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <picture>
-    <!-- 标准 WebP -->
-    <source srcset="jpg.webp" type="image/webp">
-    <!-- 最终回退到 JPG -->
-    <img src="jpg.jpg" alt="图片1示例">
-  </picture>
+    <header>
+        <nav>
+            <div class="logo">LYEJ耳机精选</div>
+            <div class="nav-links">
+                <a href="#home">首页</a>
+                <a href="#best-sellers">热销榜</a>
+                <a href="#categories">产品分类</a>
+                <a href="#about">评测标准</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="content-wrapper">
+        <!-- 原有内容保持不变 -->
+        <section class="hero">
+            <div class="hero-content" style="padding: 4rem 2rem">
+                <h1>专业蓝牙耳机评测</h1>
+                <p>基于500+小时实测数据，提供真实用户反馈与专业参数对比</p>
+                <img src="https://via.placeholder.com/800x400" alt="耳机评测场景" style="max-width:100%; border-radius:8px; margin:2rem 0">
+            </div>
+        </section>
+
+        <!-- 外部内容嵌入 -->
+        <section class="external-content">
+            <iframe 
+                src="https://www.dacu.net/?r=search?kw=蓝牙耳机"
+                title="蓝牙耳机搜索结果"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                sandbox="allow-scripts allow-same-origin"
+            ></iframe>
+        </section>
+
+        <!-- 原有产品网格等内容 -->
+        <section class="product-grid">
+            <!-- 产品卡片示例 -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200')"></div>
+                <h3>华为 FreeBuds Pro 3</h3>
+                <p>¥1499</p>
+                <div class="features">
+                    <span>🔥 降噪深度：42dB</span>
+                    <span>🎧 续航：8小时</span>
+                    <span>📱 兼容：鸿蒙/安卓/iOS</span>
+                </div>
+                <a href="#" class="cta-button">立即购买</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div style="max-width:1200px; margin:auto; padding:2rem; text-align:center">
+            <p>© 2025 LYEJ耳机精选 | 京东联盟合作伙伴</p>
+            <p>数据来源：京东商城公开信息 | 隐私政策</p>
+        </div>
+    </footer>
 </body>
 </html>
