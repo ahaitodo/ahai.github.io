@@ -3,14 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LYEJ京东蓝牙耳机精选 | 专业评测平台</title>
-    <meta name="description" content="京东联盟官方数据！覆盖全价位段蓝牙耳机实测榜单，提供降噪/续航/音质专业评测">
+    <title>LYEJ京东蓝牙耳机精选 | 降噪续航实测推荐</title>
+    <meta name="description" content="京东联盟官方精选！覆盖200-2000元全价位蓝牙耳机，专业评测团队实测降噪深度达42dB，续航最长50小时。提供苹果/华为/小米全品牌适配方案">
+    <meta name="keywords" content="蓝牙耳机推荐,京东降噪耳机,高性价比耳机,运动蓝牙耳机,游戏耳机评测">
     
+    <!-- 结构化数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "LYEJ京东蓝牙耳机精选",
+      "description": "专业蓝牙耳机评测与推荐平台",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://lyej.cn"
+        }]
+      }
+    }
+    </script>
+
     <style>
         :root {
-            --primary: #FF6B6B;
-            --text: #2D2D2D;
-            --card-gap: 2rem;
+            --primary-color: #FF6B6B;
+            --text-dark: #2D2D2D;
+            --content-max-width: 1200px;
         }
 
         * {
@@ -22,11 +42,11 @@
 
         body {
             line-height: 1.6;
-            color: var(--text);
-            padding-top: 60px;
+            color: var(--text-dark);
+            padding-top: 80px;
         }
 
-        /* 优化后的固定导航 */
+        /* 优化后的固定头部 */
         header {
             background: #fff;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -45,25 +65,39 @@
             gap: 2rem;
             flex-grow: 1;
             justify-content: flex-end;
-            list-style: none;
         }
 
-        /* 主内容容器 */
-        .content {
-            max-width: 1200px;
+        /* 内容容器 */
+        .content-wrapper {
+            max-width: var(--content-max-width);
             margin: 0 auto;
             padding: 2rem;
         }
 
         /* 嵌入内容容器 */
-        .embedded-zone {
+        .embedded-content {
             border-radius: 8px;
             overflow: hidden;
             margin: 2rem 0;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             background: #fff;
-            transition: all 0.3s ease;
-            height: 60vh; /* 固定高度 */
+        }
+
+        /* 自适应iframe */
+        .responsive-iframe {
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9比例 */
+            position: relative;
+            border: none;
+        }
+
+        .responsive-iframe iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
         }
 
         /* 移动端优化 */
@@ -75,17 +109,10 @@
             
             .nav-links {
                 gap: 1rem;
-                flex-direction: column;
-                position: absolute;
-                right: 0;
-                top: 60px;
-                background: #fff;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-                display: none;
             }
-
-            .nav-links.active {
-                display: flex;
+            
+            .content-wrapper {
+                padding: 1rem;
             }
         }
     </style>
@@ -94,98 +121,79 @@
     <header>
         <nav>
             <div class="logo">LYEJ耳机精选</div>
-            <ul class="nav-links">
-                <li><a href="#" data-category="huawei">华为耳机</a></li>
-                <li><a href="#" data-category="wireless">无线耳机</a></li>
-                <li><a href="#" data-category="lenovo">联想耳机</a></li>
-                <li><a href="#" data-category="apple">苹果耳机</a></li>
-            </ul>
+            <div class="nav-links">
+                <a href="#home" class="nav-item">华为耳机</a>
+                <a href="#best-sellers" class="nav-item">无线耳机</a>
+                <a href="#categories" class="nav-item">联想耳机</a>
+                <a href="#apple" class="nav-item">苹果耳机</a>
+            </div>
         </nav>
     </header>
 
-    <main class="content">
+    <main class="content-wrapper">
         <section class="hero">
-            <h1>专业蓝牙耳机评测</h1>
-            <p>基于500+小时实测数据，提供真实用户反馈与专业参数对比</p>
+            <div class="hero-content">
+                <h1>专业蓝牙耳机评测</h1>
+                <p>基于500+小时实测数据，提供真实用户反馈与专业参数对比</p>
+            </div>
         </section>
 
-        <!-- 动态内容容器 -->
-        <div id="dynamic-content"></div>
+        <!-- 优化后的嵌入内容 -->
+        <section class="embedded-content">
+            <div class="responsive-iframe">
+                <iframe 
+                    src="https://www.dacu.net/?r=search?kw=蓝牙耳机"
+                    title="蓝牙耳机搜索结果"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    sandbox="allow-scripts allow-same-origin"
+                ></iframe>
+            </div>
+        </section>
+
+        <!-- 产品网格 -->
+        <section class="product-grid">
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200')"></div>
+                <h3>华为 FreeBuds Pro 3</h3>
+                <p>¥1499</p>
+                <div class="features">
+                    <span>🔥 降噪深度：42dB</span>
+                    <span>🎧 续航：8小时</span>
+                    <span>📱 兼容：鸿蒙/安卓/iOS</span>
+                </div>
+                <a href="#" class="cta-button">立即购买</a>
+            </div>
+        </section>
     </main>
 
+    <footer>
+        <div style="max-width: var(--content-max-width); margin:auto; padding:2rem; text-align:center">
+            <p>© 2025 LYEJ耳机精选 | 京东联盟合作伙伴</p>
+            <p>数据来源：京东商城公开信息 | 隐私政策</p>
+        </div>
+    </footer>
+
     <script>
-        // 动态加载内容系统
-        const contentLoader = {
-            init: function() {
-                this.attachEvents();
-                this.loadInitialContent();
-            },
-
-            attachEvents: function() {
-                document.querySelectorAll('.nav-links a').forEach(link => {
-                    link.addEventListener('click', e => this.handleNavClick(e));
-                });
-
-                // 移动端菜单切换
-                document.querySelector('.nav-links').addEventListener('click', e => {
-                    if (window.innerWidth <= 768) {
-                        e.currentTarget.classList.toggle('active');
-                    }
-                });
-            },
-
-            handleNavClick: async function(e) {
+        // 菜单点击处理
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', (e) => {
                 e.preventDefault();
-                const category = e.target.dataset.category;
-                const contentZone = document.getElementById('dynamic-content');
-                
-                // 显示加载状态
-                contentZone.innerHTML = '<div class="loading">内容加载中...</div>';
-                
-                try {
-                    // 使用Fetch API获取外部内容
-                    const response = await fetch(`/api/proxy?url=${encodeURIComponent(`https://www.dacu.net/?r=search?kw=${category}耳机`)}&format=json`);
-                    const data = await response.json();
-                    
-                    // 清除现有内容
-                    contentZone.innerHTML = '';
-                    
-                    // 创建响应式容器
-                    const container = document.createElement('div');
-                    container.className = 'embedded-zone';
-                    container.innerHTML = data.html;
-                    
-                    // 注入样式重置
-                    const style = document.createElement('style');
-                    style.textContent = `
-                        .embedded-zone img {
-                            width: 100% !important;
-                            height: auto !important;
-                        }
-                        .embedded-zone iframe {
-                            border: none !important;
-                            overflow: hidden !important;
-                        }
-                        body {
-                            overflow: hidden !important;
-                        }
-                    `;
-                    container.appendChild(style);
-                    
-                    contentZone.appendChild(container);
-                } catch (error) {
-                    contentZone.innerHTML = '<div class="error">内容加载失败，请稍后重试</div>';
-                }
-            },
+                const targetId = item.getAttribute('href').substring(1);
+                loadContent(targetId);
+            });
+        });
 
-            loadInitialContent: function() {
-                // 初始加载默认内容
-                this.handleNavClick({ target: { dataset: { category: 'all' } } });
+        // 内容加载函数
+        async function loadContent(sectionId) {
+            try {
+                const response = await fetch(`/api/content/${sectionId}.json`);
+                const data = await response.json();
+                document.querySelector('.content-wrapper').innerHTML = data.html;
+            } catch (error) {
+                console.error('内容加载失败:', error);
             }
-        };
-
-        // 初始化系统
-        document.addEventListener('DOMContentLoaded', () => contentLoader.init());
+        }
     </script>
 </body>
 </html>
