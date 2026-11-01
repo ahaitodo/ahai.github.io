@@ -1,0 +1,56 @@
+{
+  "appKeys": [
+    { "name": "A", "key": "", "secret": "" },
+    { "name": "B", "key": "", "secret": "" }
+  ],
+  "envKeys": {
+    "A": { "key": "JD_APP_KEY_A", "secret": "JD_APP_SECRET_A" },
+    "B": { "key": "JD_APP_KEY_B", "secret": "JD_APP_SECRET_B" }
+  },
+  "channels": {
+    "websiteSiteId": null,
+    "socialPositionId": 10170,
+    "homepageFallbackLink": "https://u.jd.com/360lRmW"
+  },
+  "verticalKeywords": [
+    { "kw": "蓝牙耳机", "pages": 2, "tag": "爆款" },
+    { "kw": "降噪蓝牙耳机", "pages": 1, "tag": "降噪" },
+    { "kw": "骨传导耳机", "pages": 1, "tag": "骨传导" },
+    { "kw": "开放式耳机", "pages": 1, "tag": "开放式" },
+    { "kw": "游戏蓝牙耳机", "pages": 1, "tag": "游戏" },
+    { "kw": "运动蓝牙耳机", "pages": 1, "tag": "运动" },
+    { "kw": "头戴式蓝牙耳机", "pages": 1, "tag": "头戴式" }
+  ],
+  "bundleKeywords": [
+    { "kw": "充电宝", "pages": 1 },
+    { "kw": "智能手表", "pages": 1 },
+    { "kw": "蓝牙音箱", "pages": 1 }
+  ],
+  "filters": {
+    "minCommissionShare": 2.0,
+    "minCommissionYuan": 1.0,
+    "minPrice": 29,
+    "minGoodComments": 88,
+    "minSales30d": 30,
+    "excludeNameRegex": "耳帽|耳塞套|收纳包|保护套|转接头|硅胶套|挂绳|麦克风|耳机包|收纳盒|延长线|维修",
+    "brandsBoost": ["漫步者", "小米", "Redmi", "华为", "荣耀", "OPPO", "vivo", "QCY", "倍思", "FIIL", "索尼", "京东京造", "绿联", "JBL", "铁三角", "森海塞尔", "捷波朗", "Bose"]
+  },
+  "bands": [
+    { "id": "b100", "label": "百元内真香", "min": 0, "max": 100, "cap": 8 },
+    { "id": "b200", "label": "100-200销量王", "min": 100, "max": 200, "cap": 8 },
+    { "id": "b400", "label": "200-400主流之选", "min": 200, "max": 400, "cap": 8 },
+    { "id": "b1000", "label": "400-1000进阶降噪", "min": 400, "max": 1000, "cap": 6 },
+    { "id": "bflag", "label": "1000+旗舰体验", "min": 1000, "max": 999999, "cap": 4 }
+  ],
+  "activities": [
+    { "id": "hongbao1", "title": "抢无门槛红包①", "url": "https://u.jd.com/e1yc6hI", "fixed": true, "desc": "无门槛红包，最高26888元" },
+    { "id": "hongbao2", "title": "抢无门槛红包②", "url": "https://u.jd.com/eOy9Gbh", "fixed": true, "desc": "无门槛红包，最高26888元" },
+    { "id": "hongbao3", "title": "抢无门槛红包③", "url": "https://u.jd.com/ery4LHV", "fixed": true, "desc": "无门槛红包，最高26888元" },
+    { "id": "search", "title": "蓝牙耳机抄底专场", "url": "https://u.jd.com/eDyg1pj", "fixed": true, "desc": "蓝牙耳机搜索结果专场页" },
+    { "id": "coupon", "title": "京东领券中心", "url": "https://a.jd.com", "desc": "先领券再下单，耳机专场券每日限量" },
+    { "id": "miaosha", "title": "京东秒杀频道", "url": "https://miaosha.jd.com", "desc": "整点秒杀，耳机经常有半价档" },
+    { "id": "home", "title": "京东双11主会场", "url": "https://www.jd.com", "desc": "跨店满300减50，全场直降" }
+  ],
+  "linkCacheDays": 7,
+  "maxApiCallsPerRun": 80
+}

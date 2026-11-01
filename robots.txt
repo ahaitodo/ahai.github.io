@@ -1,0 +1,50 @@
+# lyej.cn 蓝牙耳机优选 — 爬虫协议
+# 通用规则
+User-agent: *
+Allow: /
+Disallow: /automation/
+Disallow: /data/linkcache.json
+
+# ---- AI / LLM 爬虫：允许检索与引用（见 /llms.txt 与 /ai.txt）----
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Sitemap
+Sitemap: https://www.lyej.cn/sitemap_index.xml
+Sitemap: https://www.lyej.cn/sitemap.xml

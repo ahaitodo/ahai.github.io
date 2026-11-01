@@ -1,0 +1,20 @@
+{
+  "updatedAt": "2026-11-01 12:42:59",
+  "source": "jd-union-api",
+  "quotaHit": true,
+  "apiCalls": 23,
+  "stats": { "fetched": 0, "passed": 0, "linked": 0 },
+  "bands": [],
+  "scenes": {},
+  "activities": [
+    { "id": "hongbao1", "title": "抢无门槛红包①", "desc": "无门槛红包，最高26888元", "url": "https://u.jd.com/e1yc6hI", "link": "https://u.jd.com/e1yc6hI", "strategy": "fixed" },
+    { "id": "hongbao2", "title": "抢无门槛红包②", "desc": "无门槛红包，最高26888元", "url": "https://u.jd.com/eOy9Gbh", "link": "https://u.jd.com/eOy9Gbh", "strategy": "fixed" },
+    { "id": "hongbao3", "title": "抢无门槛红包③", "desc": "无门槛红包，最高26888元", "url": "https://u.jd.com/ery4LHV", "link": "https://u.jd.com/ery4LHV", "strategy": "fixed" },
+    { "id": "search", "title": "蓝牙耳机抄底专场", "desc": "蓝牙耳机搜索结果专场页", "url": "https://u.jd.com/eDyg1pj", "link": "https://u.jd.com/eDyg1pj", "strategy": "fixed" },
+    { "id": "coupon", "title": "京东领券中心", "desc": "先领券再下单，耳机专场券每日限量", "url": "https://a.jd.com", "link": "https://u.jd.com/360lRmW", "strategy": "fallback" },
+    { "id": "miaosha", "title": "京东秒杀频道", "desc": "整点秒杀，耳机经常有半价档", "url": "https://miaosha.jd.com", "link": "https://u.jd.com/360lRmW", "strategy": "fallback" },
+    { "id": "home", "title": "京东双11主会场", "desc": "跨店满300减50，全场直降", "url": "https://www.jd.com", "link": "https://u.jd.com/360lRmW", "strategy": "fallback" }
+  ],
+  "bundles": [],
+  "products": []
+}
