@@ -1,0 +1,7 @@
+automation/local.secrets.ps1
+automation/last_run.log
+data/linkcache.json
+_tests/
+Thumbs.db
+.DS_Store
+*.log

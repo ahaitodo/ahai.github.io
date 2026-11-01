@@ -1,0 +1,48 @@
+name: update-deals
+
+# 每天自动刷新榜单：UTC 16:20 = 北京 00:20（京东联盟配额 0 点重置后第一时间跑）
+# 另在白天每 6 小时轻刷一次，维持推广链接新鲜度
+on:
+  schedule:
+    - cron: "20 16 * * *"
+    - cron: "20 4,10 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-deals
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run JD Union pipeline
+        shell: pwsh
+        env:
+          JD_APP_KEY_A: ${{ secrets.JD_APP_KEY_A }}
+          JD_APP_SECRET_A: ${{ secrets.JD_APP_SECRET_A }}
+          JD_APP_KEY_B: ${{ secrets.JD_APP_KEY_B }}
+          JD_APP_SECRET_B: ${{ secrets.JD_APP_SECRET_B }}
+          JD_SITE_ID_WEBSITE: ${{ secrets.JD_SITE_ID_WEBSITE }}
+        run: ./automation/update_data.ps1
+
+      - name: Commit refreshed data
+        shell: pwsh
+        run: |
+          git config user.name "lyej-bot"
+          git config user.email "bot@lyej.cn"
+          git add data/products.json data/linkcache.json automation/last_run.log
+          git diff --cached --quiet
+          if ($LASTEXITCODE -ne 0) {
+            git commit -m "chore(data): refresh deals $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
+            git push
+          } else {
+            Write-Output "No data changes."
+          }
