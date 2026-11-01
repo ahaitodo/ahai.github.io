@@ -47,7 +47,7 @@
     { "id": "hongbao2", "title": "抢无门槛红包②", "url": "https://u.jd.com/eOy9Gbh", "fixed": true, "desc": "无门槛红包，最高26888元" },
     { "id": "hongbao3", "title": "抢无门槛红包③", "url": "https://u.jd.com/ery4LHV", "fixed": true, "desc": "无门槛红包，最高26888元" },
     { "id": "search", "title": "蓝牙耳机抄底专场", "url": "https://u.jd.com/eDyg1pj", "fixed": true, "desc": "蓝牙耳机搜索结果专场页" },
-    { "id": "coupon", "title": "京东领券中心", "url": "https://a.jd.com", "desc": "先领券再下单，耳机专场券每日限量" },
+    { "id": "coupon", "title": "领券中心 · 耳机专场券", "url": "https://u.jd.com/e621Wqn", "fixed": true, "desc": "耳机专场券每日限量，先领券再下单" },
     { "id": "miaosha", "title": "京东秒杀频道", "url": "https://miaosha.jd.com", "desc": "整点秒杀，耳机经常有半价档" },
     { "id": "home", "title": "京东双11主会场", "url": "https://www.jd.com", "desc": "跨店满300减50，全场直降" }
   ],
