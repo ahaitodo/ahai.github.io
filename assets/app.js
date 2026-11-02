@@ -120,6 +120,7 @@
   function renderBands(data) {
     var wrapEl = $("band-sections");
     var nav = $("band-nav");
+    if (!wrapEl || !nav) return;
     wrapEl.textContent = ""; nav.textContent = "";
     var shown = 0;
     (data.bands || []).forEach(function (band) {
@@ -153,6 +154,7 @@
 
   function renderScenes(data) {
     var chips = $("scene-chips"), grid = $("scene-grid"), empty = $("scene-empty");
+    if (!chips || !grid) return;
     chips.textContent = ""; grid.textContent = "";
     var map = {};
     (data.products || []).forEach(function (p) {
@@ -178,6 +180,7 @@
 
   function renderBundles(data) {
     var g = $("bundle-grid");
+    if (!g) return;
     g.textContent = "";
     (data.bundles || []).forEach(function (b) {
       var card = el("div", "bcard");
